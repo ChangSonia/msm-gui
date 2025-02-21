@@ -56,11 +56,8 @@ class DirectorsController < ApplicationController
 
   def destroy
     the_id = params.fetch("an_id")
-
     matching_records = Director.where({:id=> the_id})
-    
     the_director = matching_records.at(0)
-
     the_director.destroy
 
     redirect_to("/directors")
@@ -69,20 +66,16 @@ class DirectorsController < ApplicationController
 
   def update
     m_id = params.fetch("the_id")
+    matching_records = Director.where({:id=> m_id})
+    the_director = matching_records.at(0)
 
-    matching_records = Movie.where({:id=> m_id})
+    the_director.name = params.fetch("query_name")
+    the_director.dob = params.fetch("query_dob")
+    the_director.bio = params.fetch("query_bio")
+    the_director.image = params.fetch("query_image")
     
-    the_movie = matching_records.at(0)
+    the_director.save
 
-    the_movie.title = params.fetch("the_title")
-    the_movie.year = params.fetch("the_year")
-    the_movie.duration = params.fetch("the_duration")
-    the_movie.description = params.fetch("the_description")
-    the_movie.image = params.fetch("the_image")
-    the_movie.director_id = params.fetch("the_director_id")
-    
-    the_movie.save
-
-    redirect_to("/movies/#{the_movie.id}")
+    redirect_to("/directors/#{the_director.id}")
   end
 end

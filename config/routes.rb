@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   post("/insert_director",{:controller => "directors", :action => "create" })
   get("/delete_director/:an_id", {:controller => "directors", :action => "destroy"})
   post("/modify_director/:the_id", {:controller => "directors", :action => "update"})
+
+  post("/insert_actor",{:controller => "actors", :action => "create" })
+  get("/delete_actor/:an_id", {:controller => "actors", :action => "destroy"})
+  post("/modify_actor/:the_id", {:controller => "actors", :action => "update"})
 end
+

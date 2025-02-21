@@ -36,4 +36,21 @@ class DirectorsController < ApplicationController
 
     render({ :template => "director_templates/eldest" })
   end
+
+  def create
+    # Retrieve user input from params
+    m = Director.new
+    m.name = params.fetch("query_name")
+    m.dob = params.fetch("query_dob")
+    m.bio = params.fetch("query_bio")
+    m.image = params.fetch("query_image")
+
+    m.save
+
+    redirect_to("/directors")
+    # Create record in movie table
+    # Populate each column with user input
+
+    return
+  end
 end

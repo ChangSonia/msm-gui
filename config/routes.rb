@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   post("/insert_movie_record",{:controller => "movies", :action => "create" })
   get("/delete_movie/:an_id", {:controller => "movies", :action => "destroy"})
   post("/modify_movie_record/:the_id", {:controller => "movies", :action => "update"})
+
+  post("/insert_director",{:controller => "directors", :action => "create" })
+
 end
